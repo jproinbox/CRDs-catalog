@@ -5133,6 +5133,15 @@ kueue.x-k8s.io:
     filename: kueue.x-k8s.io/workloadpriorityclass_v1beta1.json
     kind: WorkloadPriorityClass
     name: workloadpriorityclass_v1beta1
+kustomize.config.k8s.io:
+  - apiVersion: kustomize.config.k8s.io/v1beta1
+    filename: kustomize.config.k8s.io/kustomization_v1beta1.json
+    kind: Kustomization
+    name: kustomization_v1beta1
+  - apiVersion: kustomize.config.k8s.io/v1
+    filename: kustomize.config.k8s.io/kustomization_v1.json
+    kind: Kustomization
+    name: kustomization_v1
 kustomize.toolkit.fluxcd.io:
   - apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
     filename: kustomize.toolkit.fluxcd.io/kustomization_v1beta1.json
