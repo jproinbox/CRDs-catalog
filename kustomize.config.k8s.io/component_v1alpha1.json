@@ -1,16 +1,13 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "Kustomization is the Schema for a kustomize kustomization.yaml file",
+  "description": "Component is the Schema for a kustomize component.yaml file",
   "properties": {
     "apiVersion": {
-      "type": "string"
-    },
-    "bases": {
-      "description": "DEPRECATED. Bases are relative paths or git repository URLs specifying a directory containing a kustomization.yaml file.",
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
+      "description": "APIVersion defines the versioned schema of this representation of an object.",
+      "type": "string",
+      "enum": [
+        "kustomize.config.k8s.io/v1alpha1"
+      ]
     },
     "commonAnnotations": {
       "description": "CommonAnnotations to add to all objects",
@@ -68,37 +65,12 @@
       },
       "type": "array"
     },
-    "helmCharts": {
-      "description": "HelmCharts is a list of helm chart configuration instances",
-      "items": {
-        "$ref": "#/definitions/HelmChart"
-      },
-      "type": "array"
-    },
-    "helmGlobals": {
-      "description": "HelmGlobals contains helm configuration that isn't chart specific",
-      "properties": {
-        "chartHome": {
-          "description": "ChartHome is a file path, relative to the kustomization root, to a directory containing a subdirectory for each chart to be included in the kustomization",
-          "type": "string"
-        },
-        "configHome": {
-          "description": "ConfigHome defines a value that kustomize should pass to helm via the HELM_CONFIG_HOME environment variable",
-          "type": "string"
-        }
-      },
-      "additionalProperties": false,
-      "type": "object"
-    },
     "images": {
       "description": "Images is a list of (image name, new name, new tag or digest) for changing image names, tags or digests. This can also be achieved with a patch, but this operator is simpler to specify.",
       "items": {
         "$ref": "#/definitions/Image"
       },
       "type": "array"
-    },
-    "inventory": {
-      "$ref": "#/definitions/Inventory"
     },
     "labels": {
       "description": "Labels to add to all objects but not selectors",
@@ -111,7 +83,7 @@
       "description": "Kind is a string value representing the resource this object represents.",
       "type": "string",
       "enum": [
-        "Kustomization"
+        "Component"
       ]
     },
     "metadata": {
@@ -259,13 +231,6 @@
       "description": "Validators is a list of files containing validators",
       "items": {
         "type": "string"
-      },
-      "type": "array"
-    },
-    "vars": {
-      "description": "Allows things modified by kustomize to be injected into a container specification. A var is a name (e.g. FOO) associated with a field in a specific resource instance.  The field must contain a value of type string, and defaults to the name field of the instance",
-      "items": {
-        "$ref": "#/definitions/Var"
       },
       "type": "array"
     }
