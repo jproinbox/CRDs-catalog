@@ -49,12 +49,12 @@ def find_schema_url(api_version: str, kind: str, index_data: Dict[str, List[Dict
                       return None
       return None
 
-    print(f"Finding schema URL for apiVersion={api_version} kind={kind}...", end="")
+    print(f"Finding schema URL for apiVersion=\033[36m{api_version}\033[0m kind=\033[33m{kind}\033[0m...", end="")
     schema_url = run_search()
     if schema_url:
-      print(f"found: {schema_url}")
+      print(f"\033[32mfound: {schema_url}\033[0m")
     else:
-      print("not found.")
+      print("\033[31mnot found.\033[0m")
     return schema_url
 
 def annotate_file(file_path: str, index_data: Dict[str, List[Dict[str, str]]]):
